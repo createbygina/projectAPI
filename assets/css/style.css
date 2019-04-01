@@ -1,170 +1,181 @@
 h1 {
-    font-family: 'Abril Fatface', cursive;
-    color: #181818;
-    text-align: center;
-    font-size: 120px;
+  font-family: 'Abril Fatface', cursive;
+  color: #181818;
+  text-align: center;
+  font-size: 120px;
 }
 
 #pick1 {
-color: blue;
-}
-body {
-    
+  color: blue;
 }
 
-.dropDown {
-    display: block;
+
+* {
+  box-sizing: border-box
 }
+
+h1 {
+  font-family: 'Abril Fatface', cursive;
+  color: #181818;
+  text-align: center;
+  font-size: 120px;
+}
+
+#pick1 {
+  color: blue;
+}
+
+* {
+  box-sizing: border-box
+}
+
+
 
 #searchBar {
-}
-
-.carousel-indicators {
-}
-
-
-* {box-sizing:border-box}
-
-/* Slideshow container */
-.slideshow-container {
-  max-width: 1000px;
+  align-items: center;
+  justify-content: center;
   position: relative;
-  margin: auto;
-}
-
-/* Hide the images by default */
-.mySlides {
-  display: none;
-}
-
-/* Next & previous buttons */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-/* .prev:hover, .next:hover { */
-  /* background-color: rgba(0,0,0,0.8); */
-/* } */
-
-/* Caption text */
-.text {
-  color: #f2f2f2;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
+  text-align: left;
+  list-style-type: none;
+  font-family: 'Josefin Sans', sans-serif;
+  margin-left: 20%;
   width: 100%;
+  clear: both;
+    overflow: auto;
+    margin-bottom: 40px;
+}
+
+#buttonDiv {
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-align: left;
+  list-style-type: none;
+  font-family: 'Josefin Sans', sans-serif;
+  margin-left: 25%;
+  width: 100%;
+  clear: both;
+    overflow: auto;
+
+}
+
+#locationDiv {
+  align-items: center;
+  justify-content: center;
+  position: relative;
   text-align: center;
+  list-style-type: none;
+  padding: 15px;
+  font-family: 'Josefin Sans', sans-serif;
+  width: 70%;
+  margin-left: 15%;
+  clear: both;
+    overflow: auto;
+    margin-top: 25px;
+
 }
 
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
+#dropDown {
+  padding: 10px;
 }
 
-/* The dots/bullets/indicators */
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
+
+
+#submit {
+  color: white;
+  border-color: steelblue;
+  background-color: steelblue;
 }
 
-.active, .dot:hover {
-  background-color: #717171;
+body {
+  width: 100%;
 }
 
-/* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
+
+#nextPlace {
+  margin-left: 40%;
+  margin-top: 20px;
+  font-family: 'Josefin Sans', sans-serif;
+  color: white;
+  border-color: steelblue;
+  background-color: steelblue;
+
 }
 
-@-webkit-keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
+#redirects {
+  margin-left: 33%;
+  margin-top: 10px;
+  margin-bottom: 150px;
+  font-family: 'Josefin Sans', sans-serif;
+
 }
 
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
+#yelpInfo {
+  margin-top: 25px;
+  font-family: 'Josefin Sans', sans-serif;
+
+  margin-left: 12%;
 }
 
-#nextPlace{
-  margin-left:45%;
-  margin-top:20px;
-}
-
-#redirects{
-  margin-left:35%;
-  margin-top:10px;
-  margin-bottom:150px;
-}
-
-#yelpInfo{
-  margin-top:25px;
-  margin-left:12%;
-}
-
-#mainImage{
+#mainImage {
   background-color: red;
-  width:625px;
-  height:625px;
+  width: 625px;
+  height: 625px;
 }
 
-#sideImage1{
-  background-color:blue;
-  width:200px;
-  height:200px;
+#sideImage1 {
+  background-color: blue;
+  width: 200px;
+  height: 200px;
 }
 
-#sideImage2{
-  background-color:green;
-  width:200px;
-  height:200px;
-  margin-top:12px;
+#sideImage2 {
+  background-color: green;
+  width: 200px;
+  height: 200px;
+  margin-top: 12px;
 }
 
-#sideImage3{
-  background-color:yellow;
-  width:200px;
-  height:200px;
-  margin-top:12px;
+#sideImage3 {
+  background-color: yellow;
+  width: 200px;
+  height: 200px;
+  margin-top: 12px;
 }
 
-#yelpImages{
-  margin-left:18%;
-  display:inline-block;
+#yelpImages {
+  margin-left: 18%;
+  display: inline-block;
 }
 
-#sideImages{
-  margin-left:6%;
+#restaurantWebsite, #grubhub, #yelpPage {
+  color: white;
+  border-color: steelblue;
+  background-color: steelblue;
+}
+#sideImages {
+  margin-left: 6%;
+}
+
+.carousel-inner img {
+  width: 100%;
+  height: 100%;
+}
+
+h2, h4 {
+  font-family: 'Josefin Sans', sans-serif;
+
+}
+
+@media screen and (max-width: 980px) {}
+@media screen and (max-width: 768px) {}
+@media screen and (max-width: 640px) {
+  #buttonDiv, #dropDown, #locationDiv, #redirects, #nextPlace{
+    float: none;
+    clear: both;
+    overflow: auto;
+    display: block;
+    padding: 0px;
+    position: static;
+  }
 }
