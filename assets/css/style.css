@@ -30,7 +30,7 @@ h1 {
 }
 
 
-
+/* 
 #searchBar {
   align-items: center;
   justify-content: center;
@@ -43,7 +43,7 @@ h1 {
   clear: both;
     overflow: auto;
     margin-bottom: 40px;
-}
+} */
 
 #buttonDiv {
   align-items: center;
@@ -52,12 +52,15 @@ h1 {
   text-align: left;
   list-style-type: none;
   font-family: 'Josefin Sans', sans-serif;
-  margin-left: 25%;
+  margin-left: 23%;
   width: 100%;
   clear: both;
     overflow: auto;
+    margin-bottom: 100px;
+    margin-top: 10px;
 
 }
+
 
 #locationDiv {
   align-items: center;
@@ -71,7 +74,7 @@ h1 {
   margin-left: 15%;
   clear: both;
     overflow: auto;
-    margin-top: 25px;
+    margin-top: 40px;
 
 }
 
@@ -93,8 +96,8 @@ body {
 
 
 #nextPlace {
-  margin-left: 40%;
-  margin-top: 20px;
+  margin-left: 43%;
+  margin-top: 25px;
   font-family: 'Josefin Sans', sans-serif;
   color: white;
   border-color: steelblue;
@@ -103,24 +106,44 @@ body {
 }
 
 #redirects {
-  margin-left: 33%;
-  margin-top: 10px;
+  margin-left: 36%;
+  margin-top: 20px;
   margin-bottom: 150px;
   font-family: 'Josefin Sans', sans-serif;
+
 
 }
 
 #yelpInfo {
   margin-top: 25px;
   font-family: 'Josefin Sans', sans-serif;
+  margin-left: 15%;
+}
 
-  margin-left: 12%;
+#footer {
+  position: absolute;
+  bottom: 0;
+  height: 40px;
+  width: 100%;
+  padding-top: 1px;
+  background-color: #dfe2e7;
+  color: black;
+  border-top: 1px solid #dfe2e7;
+  justify-content: center;
+  font-family: 'Josefin Sans', sans-serif;
+  
+}
+#ftext{
+text-align: center;
+font-size: 12pt;
+justify-content: center;
 }
 
 #mainImage {
   background-color: red;
   width: 625px;
   height: 625px;
+
 }
 
 #sideImage1 {
@@ -144,8 +167,9 @@ body {
 }
 
 #yelpImages {
-  margin-left: 18%;
+  margin-left: 24%;
   display: inline-block;
+  
 }
 
 #restaurantWebsite, #grubhub, #yelpPage {
@@ -157,9 +181,11 @@ body {
   margin-left: 6%;
 }
 
+
 .carousel-inner img {
   width: 100%;
-  height: 100%;
+  height: 80%;
+
 }
 
 h2, h4 {
@@ -167,10 +193,12 @@ h2, h4 {
 
 }
 
+
+
 @media screen and (max-width: 980px) {}
 @media screen and (max-width: 768px) {}
 @media screen and (max-width: 640px) {
-  #buttonDiv, #dropDown, #locationDiv, #redirects, #nextPlace{
+  #buttonDiv, #dropDown, #locationDiv, #redirects, #nextPlace {
     float: none;
     clear: both;
     overflow: auto;
