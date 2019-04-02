@@ -31,10 +31,10 @@ $(document).ready(function () {
     // },
 
     getLunch: function () {
-      var i = $('#pick1').val();
-      console.log("i " + i)
-      if (i !== "Browse by Cuisine") {
-        lunch.cuisine = "&categories=" + lunch.cuisineOptions[i];
+      var x = $('#pick1').val();
+      console.log("x " + x)
+      if (x !== "Browse by Cuisine") {
+        lunch.cuisine = "&categories=" + lunch.cuisineOptions[x];
         console.log(lunch.cuisine)
       }
 
@@ -52,11 +52,14 @@ $(document).ready(function () {
         console.log(lunch.radius)
       }
 
+   
       var searchTerm = $("#searchInput").val();
+      if (searchTerm){
       lunch.search = ('&term=' + searchTerm);
       console.log(lunch.search);
+      }
       let queryURL = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?latitude=" + pos.lat + "&longitude=" + pos.lng + lunch.cuisine + lunch.price + lunch.radius + lunch.search + "&limit=10";
-
+      console.log(queryURL)
       $.ajax({
         "url": queryURL,
         "method": "GET",
@@ -131,7 +134,7 @@ $(document).ready(function () {
       var search = $("#searchInput").val();
       // lunch.openNewWindow();
       lunch.getLunch();
-      window.location = "results.html";
+      // window.location = "results.html";
 
     })
   }
