@@ -1,5 +1,12 @@
 var pos;
-
+var a;
+var b;
+var c;
+var d;
+var e;
+var f;
+var g;
+var h;
 
 $(document).ready(function () {
 
@@ -33,7 +40,7 @@ $(document).ready(function () {
     getLunch: function () {
       var x = $('#pick1').val();
       console.log("x " + x)
-  
+
 
       if (x !== "Browse by Cuisine") {
         lunch.cuisine = "&term=" + lunch.cuisineOptions[x];
@@ -41,10 +48,10 @@ $(document).ready(function () {
       }
 
       var searchTerm = $("#searchInput").val();
-      if (searchTerm){
-      lunch.cuisine = ('&term=' + searchTerm);
-      console.log("ST" + searchTerm)
-      console.log(lunch.cuisine);
+      if (searchTerm) {
+        lunch.cuisine = ('&term=' + searchTerm);
+        console.log("ST" + searchTerm)
+        console.log(lunch.cuisine);
       }
 
       var i = $('#pick2').val();
@@ -57,13 +64,13 @@ $(document).ready(function () {
 
       var i = $("#pick4").val()
       if (i !== "Distance") {
-        
+
         lunch.radius = ("&radius=" + (lunch.radiusOptions[i]))
         console.log(lunch.radius)
       }
 
-   
-     
+
+
       let queryURL = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?latitude=" + pos.lat + "&longitude=" + pos.lng + lunch.cuisine + lunch.price + lunch.radius + "&limit=10";
       console.log(queryURL)
       $.ajax({
@@ -74,9 +81,44 @@ $(document).ready(function () {
         }
       }).then(function (response) {
         localStorage.setItem('response', JSON.stringify(response));
-        var retrievedResponse = localStorage.getItem('response');
+        var retrievedResponse = JSON.parse(localStorage.getItem('response'));
         console.log(response);
         console.log(retrievedResponse);
+        var foodName = []
+        console.log(typeof (retrievedResponse))
+        for (var i = 0; i < 10; i++) {
+          console.log(retrievedResponse.businesses[i].name)
+          foodName.push(response.businesses[i]);
+          console.log(foodName);
+          console.log(i)
+        }
+        a = foodName[0].name;
+        b = foodName[0].price;
+        c = foodName[0].rating;
+        d = foodName[0].review_count;
+        e = foodName[0].location.display_address;
+        f = foodName[0].display_phone;
+        g = foodName[0].distance;
+        h = foodName[0].image_url;
+
+        var foodPics = $("<img class = 'foods'>");
+        foodPics.attr("src", h);
+
+
+
+        $("#foodType").html(a);
+        $("#price").html(b);
+        $("#rating").html(c);
+        $("#reviews").html(d);
+        $("#address").html(e);
+        $("#number").html(f);
+        $("#distance").html(g);
+        $("#yelpImages").html(foodPics);
+        $("#firstPage").hide();
+        $("#secondPage").show();
+
+
+
       })
     },
 
@@ -132,7 +174,9 @@ $(document).ready(function () {
   $("#locationDiv").on("click", function (event) {
     event.preventDefault();
     lunch.initMap();
+
   })
+
 
   if (pos !== "") {
     $("#submit").on("click", function (event) {
@@ -140,8 +184,22 @@ $(document).ready(function () {
       var search = $("#searchInput").val();
       // lunch.openNewWindow();
       lunch.getLunch();
+      console.log(a);
+
+
+      //  $(window).on('load', function() {
+      //         // page is fully loaded, including all frames, objects and images
+      //         alert("window is loaded");
+
+
+
+      //     }); 
+
+
       // window.location = "results.html";
+
 
     })
   }
+
 }); //end ready wrapper
