@@ -55,9 +55,9 @@ h1 {
   margin-left: 23%;
   width: 100%;
   clear: both;
-    overflow: auto;
-    margin-bottom: 100px;
-    margin-top: 10px;
+  overflow: auto;
+  margin-bottom: 100px;
+  margin-top: 10px;
 
 }
 
@@ -73,8 +73,8 @@ h1 {
   width: 70%;
   margin-left: 15%;
   clear: both;
-    overflow: auto;
-    margin-top: 40px;
+  overflow: auto;
+  margin-top: 40px;
 
 }
 
@@ -117,7 +117,12 @@ body {
 #yelpInfo {
   margin-top: 25px;
   font-family: 'Josefin Sans', sans-serif;
-  margin-left: 15%;
+  margin-left: 25%;
+}
+
+
+p {
+  margin-bottom: 10px;
 }
 
 #footer {
@@ -131,12 +136,13 @@ body {
   border-top: 1px solid #dfe2e7;
   justify-content: center;
   font-family: 'Josefin Sans', sans-serif;
-  
+
 }
-#ftext{
-text-align: center;
-font-size: 12pt;
-justify-content: center;
+
+#ftext {
+  text-align: center;
+  font-size: 12pt;
+  justify-content: center;
 }
 
 #mainImage {
@@ -146,7 +152,7 @@ justify-content: center;
 
 }
 
-#sideImage1 {
+/* #sideImage1 {
   background-color: blue;
   width: 200px;
   height: 200px;
@@ -164,22 +170,28 @@ justify-content: center;
   width: 200px;
   height: 200px;
   margin-top: 12px;
-}
+} */
 
 #yelpImages {
-  margin-left: 24%;
-  display: inline-block;
-  
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  margin-left: 19%;
+  /* display: inline-block; */
+
 }
 
-#restaurantWebsite, #grubhub, #yelpPage {
+#restaurantWebsite,
+#grubhub,
+#yelpPage {
   color: white;
   border-color: steelblue;
   background-color: steelblue;
 }
-#sideImages {
+
+/* #sideImages {
   margin-left: 6%;
-}
+} */
 
 
 .carousel-inner img {
@@ -188,17 +200,33 @@ justify-content: center;
 
 }
 
-h2, h4 {
+h2,
+h4 {
   font-family: 'Josefin Sans', sans-serif;
 
+}
+
+h6 {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: bold;
+  font-size: 14pt;
+  margin-top: 10px;
+  text-transform: uppercase;
 }
 
 
 
 @media screen and (max-width: 980px) {}
+
 @media screen and (max-width: 768px) {}
+
 @media screen and (max-width: 640px) {
-  #buttonDiv, #dropDown, #locationDiv, #redirects, #nextPlace {
+
+  #buttonDiv,
+  #dropDown,
+  #locationDiv,
+  #redirects,
+  #nextPlace {
     float: none;
     clear: both;
     overflow: auto;
@@ -206,4 +234,9 @@ h2, h4 {
     padding: 0px;
     position: static;
   }
+
+}
+
+#secondPage {
+  display: none;
 }

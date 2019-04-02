@@ -18,125 +18,186 @@
 
 <body>
   <!-- Logo -->
+  <div id="firstPage">
+    <h1 class="logo">eats.</h1>
+    <!-- Carousel starts -->
 
-  <h1 class="logo">eats.</h1>
-  <!-- Carousel starts -->
+    <div class="container mt-3">
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+          <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+        </ul>
 
-  <div class="container mt-3">
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <!-- Indicators -->
-      <ul class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1" class=""></li>
-        <li data-target="#myCarousel" data-slide-to="2" class=""></li>
-      </ul>
-
-      <!-- The slideshow -->
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="assets/images/slideone.jpg" alt="Los Angeles" width="1100" height="400">
-          <div class="carousel-caption">
-            <h2>Hungry and don't know what to eat?</h2>
-            <h4>Try eats.</h4>
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="assets/images/slideone.jpg" alt="Los Angeles" width="1100" height="400">
+            <div class="carousel-caption">
+              <h2>Hungry and don't know what to eat?</h2>
+              <h4>Try eats.</h4>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="assets/images/slidetwo.jpg" alt="Chicago" width="1100" height="400">
+            <div class="carousel-caption">
+              <h2>It's simple.</h2>
+              <h4>List your food preferences &amp; we'll choose for you.</h4>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="assets/images/slidethree.jpg" alt="New York" width="1100" height="400">
+            <div class="carousel-caption">
+              <h2>We provide &amp; you decide.</h2>
+              <h4>We curate choices based on your preferences. <br>We won't stop till you're satisfied.</h4>
+            </div>
           </div>
         </div>
-        <div class="carousel-item">
-          <img src="assets/images/slidetwo.jpg" alt="Chicago" width="1100" height="400">
-          <div class="carousel-caption">
-            <h2>It's simple.</h2>
-            <h4>List your food preferences &amp; we'll choose for you.</h4>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="assets/images/slidethree.jpg" alt="New York" width="1100" height="400">
-          <div class="carousel-caption">
-            <h2>We provide &amp; you decide.</h2>
-            <h4>We curate choices based on your preferences. <br>We won't stop till you're satisfied.</h4>
-          </div>
-        </div>
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
       </div>
 
-      <!-- Left and right controls -->
-      <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-      </a>
-      <a class="carousel-control-next" href="#myCarousel" data-slide="next">
-        <span class="carousel-control-next-icon"></span>
-      </a>
     </div>
 
-  </div>
-
-  <!-- Location -->
-  <div class="mx-auto" width="100%" id="findLoc">
-  <div class="col-auto my-1">
-    <button type="submit" id="locationDiv" class="btn btn-warning">click here to send us your location.</button>
-  </div>
-  </div>
+    <!-- Location -->
+    <div class="mx-auto" width="100%" id="findLoc">
+      <div class="col-auto my-1">
+        <button type="submit" id="locationDiv" class="btn btn-warning">click here to send us your location.</button>
+      </div>
+    </div>
 
 
-  <!-- Form starts -->
+    <!-- Form starts -->
 
-  <div class="container" id="buttonDiv">
-    <div class="btn-group-vertical">
-      <form>
-        <div class="form-row align-items-center" id="dropDown">
-          <div class="col-auto my-1">
-            <select class="custom-select mr-sm-2" id="pick1">
-              <option selected="">Browse by Cuisine</option>
-              <option value="0">Asian</option>
-              <option value="1">American</option>
-              <option value="2">Mexican</option>
-              <option value="3">Gluten-Free</option>
-              <option value="4">Vegetarian</option>
-              <option value="5">Indian</option>
-              <option value="6">Italian</option>
-              <option value="7">Dessert</option>
-
-            </select>
-          </div>
+    <div class="container" id="buttonDiv">
+      <div class="btn-group-vertical">
+        <form>
           <div class="form-row align-items-center" id="dropDown">
             <div class="col-auto my-1">
-              <select class="custom-select mr-sm-2" id="pick2">
-                <option selected="">Price $</option>
-                <option value="0">$</option>
-                <option value="1">$$</option>
-                <option value="2">$$$</option>
-                <option value="3">$$$$</option>
+              <select class="custom-select mr-sm-2" id="pick1">
+                <option selected="">Browse by Cuisine</option>
+                <option value="0">Asian</option>
+                <option value="1">American</option>
+                <option value="2">Mexican</option>
+                <option value="3">Gluten-Free</option>
+                <option value="4">Vegetarian</option>
+                <option value="5">Indian</option>
+                <option value="6">Italian</option>
+                <option value="7">Dessert</option>
+
               </select>
             </div>
             <div class="form-row align-items-center" id="dropDown">
               <div class="col-auto my-1">
-                <select class="custom-select mr-sm-2" id="pick4">
-                  <option selected="">Distance</option>
-                  <option value="0">Driving (5 mi.)</option>
-                  <option value="1">Biking (2 mi.)</option>
-                  <option value="2">Walking (1 mi.)</option>
-                  <option value="3">Within 4 blocks</option>
-
+                <select class="custom-select mr-sm-2" id="pick2">
+                  <option selected="">Price $</option>
+                  <option value="0">$</option>
+                  <option value="1">$$</option>
+                  <option value="2">$$$</option>
+                  <option value="3">$$$$</option>
                 </select>
               </div>
-            </div>
-            <div class="form-row align-items-center" id="dropDown">
+              <div class="form-row align-items-center" id="dropDown">
+                <div class="col-auto my-1">
+                  <select class="custom-select mr-sm-2" id="pick4">
+                    <option selected="">Distance</option>
+                    <option value="0">Driving (5 mi.)</option>
+                    <option value="1">Biking (2 mi.)</option>
+                    <option value="2">Walking (1 mi.)</option>
+                    <option value="3">Within 4 blocks</option>
 
-              <input aria-label="Search" id="searchInput" class="form-control mr-sm-2" placeholder="get specific" type="search">
+                  </select>
+                </div>
+              </div>
+              <div class="form-row align-items-center" id="dropDown">
+
+                <input aria-label="Search" id="searchInput" class="form-control mr-sm-2" placeholder="get specific"
+                  type="search">
+              </div>
+
+              <div class="col-auto my-1">
+                <button type="submit" id="submit" class="btn btn-warning">find your eats.</button>
+              </div>
             </div>
 
-            <div class="col-auto my-1">
-              <button type="submit" id="submit" class="btn btn-warning">find your eats.</button>
-            </div>
           </div>
-
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
 
-  <div class="fixed-bottom">
-      <nav class="navbar fixed-bottom navbar-light" id="footer" style="background-color:white">
-        <a class="footer-text" href="#" id="ftext"></a>eats. ©</a>
-      </nav>
+  <!-- second page -->
+  <div id="secondPage">
+    <h1 class="logo">eats.</h1>
+
+    <div id="yelpImages" class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div id="mainImage">1</div>
+        </div>
+        <div class="col-5" id="sideImages">
+          <div id="sideImage1">2</div>
+          <div id="sideImage2">3</div>
+          <div id="sideImage3">4</div>
+        </div>
+      </div>
     </div>
+
+    <div id="yelpInfo" class="container">
+        <p class="text-center">
+
+        <div class="row">
+          <div class="col-5">
+            <h6>Restaurant:</h6>
+            <p id="foodType"></p>
+            <h6>Price:</h6>
+
+            <p id="price">testHolder2</p>
+            <h6>Rating:</h6>
+
+            <p id="rating">testHolder3</p>
+          </div>
+          <div class="col-7">
+            <h6>Number of Reviews:</h6>
+
+            <p id="reviews">testHolder3</p>
+            <h6>Address:</h6>
+
+            <p id="address">testHolder4</p>
+            <h6>Phone Number:</h6>
+
+            <p id="number">testHolder4</p>
+
+            <p id="distance">testHolder5</p>
+      </p>
+    </div>
+  </div>
+  </div>
+
+  <div id="map"></div>
+
+  <button id="nextPlace" class="btn btn-secondary btn-lg">thank u, next</button>
+
+  <div id="redirects">
+    <button id="restaurantWebsite" class="btn btn-secondary btn-lg">website.</button>
+    <button id="grubhub" class="btn btn-secondary btn-lg">grubhub delivery.</button>
+    <button id="yelpPage" class="btn btn-secondary btn-lg">yelp.</button>
+  </div>
+  </div>
+
+  <div class="fixed-bottom">
+    <nav class="navbar fixed-bottom navbar-light" id="footer" style="background-color:white">
+      <a class="footer-text" href="#" id="ftext"></a>eats. ©</a>
+    </nav>
+  </div>
 
 
 
