@@ -5,21 +5,53 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>eats.</title>
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Playfair+Display" rel="stylesheet">
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/css/style.css" rel="stylesheet" type="text/css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
 </head>
 
 <body>
   <h1 class="logo">eats.</h1>
 
-  
+  <div id="yelpImages" class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div id="mainImage">1</div>
+      </div>
+      <div class="col-5" id="sideImages">
+        <div id="sideImage1">2</div>
+        <div id="sideImage2">3</div>
+        <div id="sideImage3">4</div>
+      </div>
+    </div>
+  </div>
 
+  <div id="yelpInfo" class="container border border-secondary">
+    <div class="row">
+      <div class="col-5">
+        <p id="foodType">testHolder1</p>
+        <p id="price">testHolder2</p>
+        <p id="hours">testHolder3</p>
+      </div>
+      <div class="col-7">
+        <p id="address">testHolder4</p>
+        <p id="distance">testHolder5</p>
+      </div>
+    </div>
+  </div>
 
+  <div id="map"></div>
 
+  <button id="nextPlace" class="btn btn-secondary btn-lg">thank u, next</button>
+
+  <div id="redirects">
+    <button id="restaurantWebsite" class="btn btn-secondary btn-lg">website.</button>
+    <button id="grubhub" class="btn btn-secondary btn-lg">grubhub delivery.</button>
+    <button id="yelpPage" class="btn btn-secondary btn-lg">yelp.</button>
+  </div>
   <script src="assets/javascript/app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
 </body>
