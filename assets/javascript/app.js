@@ -8,7 +8,7 @@ $(document).ready(function () {
     slideIndex: 1,
     cuisine: "",
     price: "",
-    radius: 0,
+    radius: "",
     open: false,
     cuisineOptions: ["asian", "american", "mexican", "gluten-free", "vegetarian", "indian", "italian", "dessert"],
     priceOptions: [1, 2, 3, 4],
@@ -33,9 +33,18 @@ $(document).ready(function () {
     getLunch: function () {
       var x = $('#pick1').val();
       console.log("x " + x)
+  
+
       if (x !== "Browse by Cuisine") {
-        lunch.cuisine = "&categories=" + lunch.cuisineOptions[x];
+        lunch.cuisine = "&term=" + lunch.cuisineOptions[x];
         console.log(lunch.cuisine)
+      }
+
+      var searchTerm = $("#searchInput").val();
+      if (searchTerm){
+      lunch.cuisine = ('&term=' + searchTerm);
+      console.log("ST" + searchTerm)
+      console.log(lunch.cuisine);
       }
 
       var i = $('#pick2').val();
@@ -48,17 +57,14 @@ $(document).ready(function () {
 
       var i = $("#pick4").val()
       if (i !== "Distance") {
+        
         lunch.radius = ("&radius=" + (lunch.radiusOptions[i]))
         console.log(lunch.radius)
       }
 
    
-      var searchTerm = $("#searchInput").val();
-      if (searchTerm){
-      lunch.search = ('&term=' + searchTerm);
-      console.log(lunch.search);
-      }
-      let queryURL = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?latitude=" + pos.lat + "&longitude=" + pos.lng + lunch.cuisine + lunch.price + lunch.radius + lunch.search + "&limit=10";
+     
+      let queryURL = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?latitude=" + pos.lat + "&longitude=" + pos.lng + lunch.cuisine + lunch.price + lunch.radius + "&limit=10";
       console.log(queryURL)
       $.ajax({
         "url": queryURL,
