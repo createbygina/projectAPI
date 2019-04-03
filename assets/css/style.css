@@ -54,8 +54,8 @@ body {
 }
 
 #nextPlace {
-  margin-left: 43%;
-  margin-top: 25px;
+  /* margin-left: 43%;
+  margin-top: 25px; */
   font-family: 'Josefin Sans', sans-serif;
   color: white;
   border-color: steelblue;
@@ -63,9 +63,9 @@ body {
 }
 
 #redirects {
-  margin-left: 36%;
-  margin-top: 25px;
-  margin-bottom: 150px;
+  margin-left: 42%;
+  margin-top: 35px;
+  margin-bottom: 150px; 
   font-family: 'Josefin Sans', sans-serif;
 }
 
@@ -132,9 +132,10 @@ body {
   display: flex;
 }
 
-#restaurantWebsite,
-#grubhub,
+/* #restaurantWebsite,
+#grubhub, */
 #yelpPage {
+  margin-left: 2%;
   color: white;
   border-color: steelblue;
   background-color: steelblue;
@@ -187,4 +188,10 @@ h6 {
 
 #secondPage {
   display: none;
+}
+
+#map {
+  height: 100%;
+  width: 50%;
+  margin-left: 25%;
 }

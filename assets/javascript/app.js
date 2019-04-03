@@ -1,4 +1,8 @@
-var pos;
+var pos = {
+  lat: 34.062255799999996,
+  lng: -118.44514690000001
+};
+var qpos;
 var a;
 var b;
 var c;
@@ -7,8 +11,50 @@ var e;
 var f;
 var g;
 var h;
+var k;
 var y = 0;
 var foodName = [];
+var map, infoWindow;
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {
+      lat: 34.062255799999996,
+      lng: -118.44514690000001
+    },
+    zoom: 20
+  });
+  infoWindow = new google.maps.InfoWindow;
+
+  // Try HTML5 geolocation.
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      pos = {
+        lat: pos.lat,
+        lng: pos.lng
+      };
+      console.log(pos);
+
+      infoWindow.setPosition(pos);
+      infoWindow.setContent('Location found.');
+      infoWindow.open(map);
+      map.setCenter(pos);
+    }, function () {
+      handleLocationError(true, infoWindow, map.getCenter());
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
+}
+
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(browserHasGeolocation ?
+    'Error: The Geolocation service failed.' :
+    'Error: Your browser doesn\'t support geolocation.');
+  infoWindow.open(map);
+}
 
 $(document).ready(function () {
 
@@ -23,61 +69,17 @@ $(document).ready(function () {
     priceOptions: [1, 2, 3, 4],
     radiusOptions: [8046, 3218, 1609, 402],
     search: "",
-    map: "",
-    infoWindow: "",
 
-    initMap: function () {
+    locationFinder: function () {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
-          pos = {
+          qpos = {
             lat: position.coords.latitude,
             lng: position.coords.longitude
           };
-          console.log("pos " + pos + pos.lat + pos.lng);
         })
       }
     },
-
-    initMap1: function () {
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: {
-          lat: 34.062255799999996,
-          lng: -118.44514690000001
-        },
-        zoom: 20
-      });
-      infoWindow = new google.maps.InfoWindow;
-
-      // Try HTML5 geolocation.
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-          var pos = {
-            lat: foodName[y].coordinates.latitude,
-            lng: foodName[y].coordinates.longitude
-          };
-          console.log(pos);
-
-          infoWindow.setPosition(pos);
-          infoWindow.setContent('Location found.');
-          infoWindow.open(map);
-          map.setCenter(pos);
-        }, function () {
-          handleLocationError(true, infoWindow, map.getCenter());
-        });
-      } else {
-        // Browser doesn't support Geolocation
-        handleLocationError(false, infoWindow, map.getCenter());
-      }
-    },
-
-    handleLocationError: function (browserHasGeolocation, infoWindow, pos) {
-      infoWindow.setPosition(pos);
-      infoWindow.setContent(browserHasGeolocation ?
-        'Error: The Geolocation service failed.' :
-        'Error: Your browser doesn\'t support geolocation.');
-      infoWindow.open(map);
-    },
-
 
     getLunch: function () {
       var x = $('#pick1').val();
@@ -110,7 +112,7 @@ $(document).ready(function () {
         console.log(lunch.radius)
       }
 
-      let queryURL = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?latitude=" + pos.lat + "&longitude=" + pos.lng + lunch.cuisine + lunch.price + lunch.radius + "&limit=10";
+      let queryURL = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?latitude=" + qpos.lat + "&longitude=" + qpos.lng + lunch.cuisine + lunch.price + lunch.radius + "&limit=10";
       console.log(queryURL)
       $.ajax({
         "url": queryURL,
@@ -146,6 +148,9 @@ $(document).ready(function () {
         f = foodName[y].display_phone;
         g = foodName[y].distance;
         h = foodName[y].image_url;
+        k = foodName[y].url;
+        pos.lat = foodName[y].coordinates.latitude;
+        pos.lng = foodName[y].coordinates.longitude;
 
         var foodPics = $("<img class = 'foods'>");
         foodPics.attr("src", h);
@@ -160,6 +165,7 @@ $(document).ready(function () {
         $("#yelpImages").html(foodPics);
         $("#firstPage").hide();
         $("#secondPage").show();
+        $("#yelpPage").attr('href', k);
 
       })
     },
@@ -173,6 +179,11 @@ $(document).ready(function () {
       f = foodName[y].display_phone;
       g = foodName[y].distance;
       h = foodName[y].image_url;
+      k = foodName[y].url;
+      pos.lat = foodName[y].coordinates.latitude;
+      pos.lng = foodName[y].coordinates.longitude;
+
+
 
       var foodPics = $("<img class = 'foods'>");
       foodPics.attr("src", h);
@@ -187,13 +198,15 @@ $(document).ready(function () {
       $("#yelpImages").html(foodPics);
       $("#firstPage").hide();
       $("#secondPage").show();
+      $("#yelpPage").attr('href', k);
+
     }
   } //end lunch obj
   console.log('startup');
 
   $("#locationDiv").on("click", function (event) {
     event.preventDefault();
-    lunch.initMap();
+    lunch.locationFinder();
 
   })
 
@@ -201,9 +214,10 @@ $(document).ready(function () {
     $("#submit").on("click", function (event) {
       event.preventDefault()
       var search = $("#searchInput").val();
+      lunch.locationFinder();
       lunch.getLunch();
-      lunch.initMap1();
       console.log(a);
+      initMap();
     })
   }
 
@@ -212,9 +226,13 @@ $(document).ready(function () {
     y++;
     if (y < foodName.length) {
       lunch.tyNext();
+      initMap();
     } else {
       location.reload();
     }
   })
 
+  $(".logo").on("click", function () {
+    location.reload();
+  })
 }); //end ready wrapper
