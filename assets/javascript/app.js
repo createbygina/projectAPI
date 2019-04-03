@@ -7,6 +7,8 @@ var e;
 var f;
 var g;
 var h;
+var y = 0;
+var foodName = [];
 
 $(document).ready(function () {
 
@@ -21,6 +23,8 @@ $(document).ready(function () {
     priceOptions: [1, 2, 3, 4],
     radiusOptions: [8046, 3218, 1609, 402],
     search: "",
+    map: "",
+    infoWindow: "",
 
     initMap: function () {
       if (navigator.geolocation) {
@@ -33,9 +37,47 @@ $(document).ready(function () {
         })
       }
     },
-    // openNewWindow: function () {
-    //   window.open(url, "results.html");
-    // },
+
+    initMap1: function () {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {
+          lat: 34.062255799999996,
+          lng: -118.44514690000001
+        },
+        zoom: 20
+      });
+      infoWindow = new google.maps.InfoWindow;
+
+      // Try HTML5 geolocation.
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          var pos = {
+            lat: foodName[y].coordinates.latitude,
+            lng: foodName[y].coordinates.longitude
+          };
+          console.log(pos);
+
+          infoWindow.setPosition(pos);
+          infoWindow.setContent('Location found.');
+          infoWindow.open(map);
+          map.setCenter(pos);
+        }, function () {
+          handleLocationError(true, infoWindow, map.getCenter());
+        });
+      } else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, map.getCenter());
+      }
+    },
+
+    handleLocationError: function (browserHasGeolocation, infoWindow, pos) {
+      infoWindow.setPosition(pos);
+      infoWindow.setContent(browserHasGeolocation ?
+        'Error: The Geolocation service failed.' :
+        'Error: Your browser doesn\'t support geolocation.');
+      infoWindow.open(map);
+    },
+
 
     getLunch: function () {
       var x = $('#pick1').val();
@@ -60,7 +102,6 @@ $(document).ready(function () {
         lunch.price = ("&price=" + (lunch.priceOptions[i]))
         console.log(lunch.price);
       }
-      // {
 
       var i = $("#pick4").val()
       if (i !== "Distance") {
@@ -68,8 +109,6 @@ $(document).ready(function () {
         lunch.radius = ("&radius=" + (lunch.radiusOptions[i]))
         console.log(lunch.radius)
       }
-
-
 
       let queryURL = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?latitude=" + pos.lat + "&longitude=" + pos.lng + lunch.cuisine + lunch.price + lunch.radius + "&limit=10";
       console.log(queryURL)
@@ -84,7 +123,6 @@ $(document).ready(function () {
         var retrievedResponse = JSON.parse(localStorage.getItem('response'));
         console.log(response);
         console.log(retrievedResponse);
-        var foodName = []
         console.log(typeof (retrievedResponse))
         for (var i = 0; i < 10; i++) {
           console.log(retrievedResponse.businesses[i].name)
@@ -92,19 +130,25 @@ $(document).ready(function () {
           console.log(foodName);
           console.log(i)
         }
-        a = foodName[0].name;
-        b = foodName[0].price;
-        c = foodName[0].rating;
-        d = foodName[0].review_count;
-        e = foodName[0].location.display_address;
-        f = foodName[0].display_phone;
-        g = foodName[0].distance;
-        h = foodName[0].image_url;
+
+        var j, x, i;
+        for (i = foodName.length - 1; i > 0; i--) {
+          j = Math.floor(Math.random() * (i + 1));
+          x = foodName[i];
+          foodName[i] = foodName[j];
+          foodName[j] = x
+        }
+        a = foodName[y].name;
+        b = foodName[y].price;
+        c = foodName[y].rating;
+        d = foodName[y].review_count;
+        e = foodName[y].location.display_address[0] + "</br>" + foodName[y].location.display_address[1];
+        f = foodName[y].display_phone;
+        g = foodName[y].distance;
+        h = foodName[y].image_url;
 
         var foodPics = $("<img class = 'foods'>");
         foodPics.attr("src", h);
-
-
 
         $("#foodType").html(a);
         $("#price").html(b);
@@ -117,59 +161,35 @@ $(document).ready(function () {
         $("#firstPage").hide();
         $("#secondPage").show();
 
-
-
       })
     },
 
-    //  settings: {
-    //   "async": true,
-    //   "crossDomain": true,
-    //   "url": "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/WavvLdfdP6g8aZTtbBQHTw",
-    //   "method": "GET",
-    //   "headers": {
-    //     "Authorization": "Bearer S0WWk7FjtBiRBwAKcUlSEM21ieNrXSMfOW40A-d5nQmAXNVApE_9AsLrkfbSMt66JWI7c1_zlV43T75ZaWa8eQvbdM_NGlqQ_JDc3bTOuv6ML75_ip94vl2w1xmdXHYx",
-    //     "cache-control": "no-cache",
-    //     "Postman-Token": "90f6bddd-d9a5-483b-a97b-049d8f49019a"
-    //   }
-    // },
+    tyNext: function () {
+      a = foodName[y].name;
+      b = foodName[y].price;
+      c = foodName[y].rating;
+      d = foodName[y].review_count;
+      e = foodName[y].location.display_address[0] + "</br>" + foodName[y].location.display_address[1];
+      f = foodName[y].display_phone;
+      g = foodName[y].distance;
+      h = foodName[y].image_url;
 
-    // ajaxfunction: function () {
-    //   $.ajax(lunch.settings).done(function (response) {
-    //     console.log(response);
-    //   });
-    // },
+      var foodPics = $("<img class = 'foods'>");
+      foodPics.attr("src", h);
 
-    // plusSlides: function (n) {
-    //   showSlides(slideIndex += n);
-    // },
-
-    // currentSlide: function (n) {
-    //   showSlides(slideIndex = n);
-    // },
-
-    // showSlides: function (n) {
-    //   var i;
-    //   var slides = document.getElementsByClassName("mySlides");
-    //   var dots = document.getElementsByClassName("dot");
-    //   if (n > slides.length) {
-    //     lunch.slideIndex = 1
-    //   }
-    //   if (n < 1) {
-    //     slideIndex = slides.length
-    //   }
-    //   for (i = 0; i < slides.length; i++) {
-    //     slides[i].style.display = "none";
-    //   }
-    //   for (i = 0; i < dots.length; i++) {
-    //     dots[i].className = dots[i].className.replace(" active", "");
-    //   }
-    //   slides[lunch.slideIndex - 1].style.display = "block";
-    //   dots[lunch.slideIndex - 1].className += " active";
-    // },
+      $("#foodType").html(a);
+      $("#price").html(b);
+      $("#rating").html(c);
+      $("#reviews").html(d);
+      $("#address").html(e);
+      $("#number").html(f);
+      $("#distance").html(g);
+      $("#yelpImages").html(foodPics);
+      $("#firstPage").hide();
+      $("#secondPage").show();
+    }
   } //end lunch obj
   console.log('startup');
-  // lunch.showSlides(lunch.slideIndex);
 
   $("#locationDiv").on("click", function (event) {
     event.preventDefault();
@@ -177,29 +197,24 @@ $(document).ready(function () {
 
   })
 
-
   if (pos !== "") {
     $("#submit").on("click", function (event) {
       event.preventDefault()
       var search = $("#searchInput").val();
-      // lunch.openNewWindow();
       lunch.getLunch();
+      lunch.initMap1();
       console.log(a);
-
-
-      //  $(window).on('load', function() {
-      //         // page is fully loaded, including all frames, objects and images
-      //         alert("window is loaded");
-
-
-
-      //     }); 
-
-
-      // window.location = "results.html";
-
-
     })
   }
+
+  $("#nextPlace").on("click", function (event) {
+    event.preventDefault();
+    y++;
+    if (y < foodName.length) {
+      lunch.tyNext();
+    } else {
+      location.reload();
+    }
+  })
 
 }); //end ready wrapper
